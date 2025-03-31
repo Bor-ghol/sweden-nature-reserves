@@ -1,0 +1,27 @@
+<%- include('../../partials/header') %>
+
+<section class="page-header" style="background-image: url('<%= activity.image %>')">
+  <div class="container">
+    <h1><%= activity.name %></h1>
+    <p><%= activity.description %></p>
+  </div>
+</section>
+
+<section class="locations-list container">
+  <h2>Best Locations for <%= activity.name %></h2>
+  
+  <div class="cards-grid">
+    <% if (activity.locations && activity.locations.length > 0) { %>
+      <% activity.locations.forEach(location => { %>
+        <%- include('../../partials/card', {
+          item: location,
+          url: `/activities/${activity.id}/${location.id}`
+        }) %>
+      <% }); %>
+    <% } else { %>
+      <p>No locations found for this activity.</p>
+    <% } %>
+  </div>
+</section>
+
+<%- include('../../partials/footer') %>

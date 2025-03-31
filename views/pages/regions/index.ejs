@@ -1,0 +1,25 @@
+<%- include('../../partials/header') %>
+
+<section class="page-header" style="background-image: url('/images/regions-header.jpg')">
+  <div class="container">
+    <h1>Regions</h1>
+    <p>Explore Sweden's diverse natural regions and their unique ecosystems</p>
+  </div>
+</section>
+
+<section class="regions-list container">
+  <div class="cards-grid">
+    <% if (regions && regions.length > 0) { %>
+      <% regions.forEach(region => { %>
+        <%- include('../../partials/card', {
+          item: region,
+          url: `/regions/${region.id}`
+        }) %>
+      <% }); %>
+    <% } else { %>
+      <p>No regions found.</p>
+    <% } %>
+  </div>
+</section>
+
+<%- include('../../partials/footer') %>

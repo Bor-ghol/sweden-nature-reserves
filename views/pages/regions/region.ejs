@@ -1,0 +1,27 @@
+<%- include('../../partials/header') %>
+
+<section class="page-header" style="background-image: url('<%= region.image %>')">
+  <div class="container">
+    <h1><%= region.name %></h1>
+    <p><%= region.description %></p>
+  </div>
+</section>
+
+<section class="reserves-list container">
+  <h2>Nature Reserves in <%= region.name %></h2>
+  
+  <div class="cards-grid">
+    <% if (region.reserves && region.reserves.length > 0) { %>
+      <% region.reserves.forEach(reserve => { %>
+        <%- include('../../partials/card', {
+          item: reserve,
+          url: `/regions/${region.id}/${reserve.id}`
+        }) %>
+      <% }); %>
+    <% } else { %>
+      <p>No reserves found in this region.</p>
+    <% } %>
+  </div>
+</section>
+
+<%- include('../../partials/footer') %>

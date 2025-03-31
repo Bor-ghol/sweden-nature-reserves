@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= title %></title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <header>
+    <div class="container">
+      <div class="logo">
+        <a href="/">Sweden's Nature Reserves</a>
+      </div>
+      <nav>
+        <ul>
+          <li><a href="/" class="<%= activeLink === 'home' ? 'active' : '' %>">Home</a></li>
+          <li><a href="/regions" class="<%= activeLink === 'regions' ? 'active' : '' %>">Regions</a></li>
+          <li><a href="/activities" class="<%= activeLink === 'activities' ? 'active' : '' %>">Activities</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+  <main>

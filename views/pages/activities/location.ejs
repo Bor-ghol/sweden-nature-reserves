@@ -1,0 +1,51 @@
+<%- include('../../partials/header') %>
+
+<section class="page-header" style="background-image: url('<%= location.image %>')">
+  <div class="container">
+    <h1><%= location.name %></h1>
+    <p><%= location.description %></p>
+    <div class="breadcrumbs">
+      <a href="/activities">Activities</a> &gt; 
+      <a href="/activities/<%= activity.id %>"><%= activity.name %></a> &gt; 
+      <span><%= location.name %></span>
+    </div>
+  </div>
+</section>
+
+<section class="location-details container">
+  <div class="location-info">
+    <div class="location-facts">
+      <h2>Information</h2>
+      <ul>
+        <% if (location.difficulty) { %>
+          <li><strong>Difficulty:</strong> <%= location.difficulty %></li>
+        <% } %>
+        <% if (location.bestSeason) { %>
+          <li><strong>Best Season:</strong> <%= location.bestSeason %></li>
+        <% } %>
+        <% if (location.guidedTours !== undefined) { %>
+          <li><strong>Guided Tours:</strong> <%= location.guidedTours ? 'Available' : 'Not available' %></li>
+        <% } %>
+      </ul>
+    </div>
+    
+    <div class="location-highlights">
+      <h2>Highlights</h2>
+      <% if (location.highlights && location.highlights.length > 0) { %>
+        <ul>
+          <% location.highlights.forEach(highlight => { %>
+            <li><%= highlight %></li>
+          <% }); %>
+        </ul>
+      <% } else { %>
+        <p>No highlights available.</p>
+      <% } %>
+    </div>
+  </div>
+  
+  <div class="location-image">
+    <img src="<%= location.image %>" alt="<%= location.name %>">
+  </div>
+</section>
+
+<%- include('../../partials/footer') %>

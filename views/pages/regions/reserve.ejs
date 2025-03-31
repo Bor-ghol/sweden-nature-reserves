@@ -1,0 +1,44 @@
+<%- include('../../partials/header') %>
+
+<section class="page-header" style="background-image: url('<%= reserve.image %>')">
+  <div class="container">
+    <h1><%= reserve.name %></h1>
+    <p><%= reserve.description %></p>
+    <div class="breadcrumbs">
+      <a href="/regions">Regions</a> &gt; 
+      <a href="/regions/<%= region.id %>"><%= region.name %></a> &gt; 
+      <span><%= reserve.name %></span>
+    </div>
+  </div>
+</section>
+
+<section class="reserve-details container">
+  <div class="reserve-info">
+    <div class="reserve-facts">
+      <h2>Facts</h2>
+      <ul>
+        <li><strong>Area:</strong> <%= reserve.area %></li>
+        <li><strong>Established:</strong> <%= reserve.established %></li>
+      </ul>
+    </div>
+    
+    <div class="reserve-highlights">
+      <h2>Highlights</h2>
+      <% if (reserve.highlights && reserve.highlights.length > 0) { %>
+        <ul>
+          <% reserve.highlights.forEach(highlight => { %>
+            <li><%= highlight %></li>
+          <% }); %>
+        </ul>
+      <% } else { %>
+        <p>No highlights available.</p>
+      <% } %>
+    </div>
+  </div>
+  
+  <div class="reserve-image">
+    <img src="<%= reserve.image %>" alt="<%= reserve.name %>">
+  </div>
+</section>
+
+<%- include('../../partials/footer') %>

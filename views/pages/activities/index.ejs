@@ -1,0 +1,25 @@
+<%- include('../../partials/header') %>
+
+<section class="page-header" style="background-image: url('/images/activities-header.jpg')">
+  <div class="container">
+    <h1>Activities</h1>
+    <p>Discover outdoor activities in Sweden's beautiful nature reserves</p>
+  </div>
+</section>
+
+<section class="activities-list container">
+  <div class="cards-grid">
+    <% if (activities && activities.length > 0) { %>
+      <% activities.forEach(activity => { %>
+        <%- include('../../partials/card', {
+          item: activity,
+          url: `/activities/${activity.id}`
+        }) %>
+      <% }); %>
+    <% } else { %>
+      <p>No activities found.</p>
+    <% } %>
+  </div>
+</section>
+
+<%- include('../../partials/footer') %>
